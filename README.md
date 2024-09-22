@@ -16,10 +16,21 @@ The data set contains 5 tables. Tables are Customers, Date, Markets, Products an
   ### Data Analysis using SQL
  1) I use dump sql file as data set. so I imort this dump sql file into MySQL. It will create entire data base along with the records in the system. Sales is the database name and it has 5 tables. Names of the tables are Customers, Date, Markets, Products and Transactions.
 
- 2) Let's look at the records from each table.
-    ```sql
-    select * from sales.customers;
-    ``` 
+  show the records from customers table
+   ```sql
+   select * from sales.customers;
+   ```
+ check the total number of customers.
+  ```sql
+  select count(*) from sales.customers;
+  ```
+show transactions for the market name Chennai
+```sql
+ select * from sales.tranactions where market_code = 'Mark001';
+```
+
+  
+     
 
 
 
