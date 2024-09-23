@@ -28,8 +28,38 @@ show transactions for the market name Chennai
 ```sql
  select * from sales.tranactions where market_code = 'Mark001';
 ```
+check the sales amount has any wrong value
+```sql
+ Select *  from sales.transactions where sales_amount<=0;
+```
+Screen short
+here we can see that sales amount column has some negative values and zero. So I have to clean that using power BI.
 
-  
+let's find the currency column for sales amount in same currency or not.
+```sql
+ select distinct currency from sales.transactions;
+```
+Screen Short
+
+Here we can see that  two types INR , US.
+
+Let's look the transactions done in US Dollar
+```sql
+ select * from sales.transactions where currency='USD';
+```
+Only two transactions. So I decide to convert this USD to INR .
+
+show the total revenue in chennai in the year 2020
+```sql
+ select sum(sales.transactions.sales_amount) from sales.transactions INNER JOIN sales.date ON sales.transactions.order_date=sales.date.date where sales.date.year=2020 and sales.transactions.market_code='Mark001' ;
+```
+
+
+### Data Modeling using Power BI  
+ Screen Short
+
+### Data cleaning & Analysis using Power BI
+   
      
 
 
