@@ -56,16 +56,22 @@ show the total revenue in chennai in the year 2020
 
 
 ### Data Modeling using Power BI  
- Screen Short
+ 
+ ![Data Modelling](https://github.com/user-attachments/assets/2d158cea-dc2a-4da1-8c13-230e5aaff795)
+
 
 ### Data cleaning & Analysis using Power BI
 
 First I did filter in the column market_name from the table Market for avoiding new york and paris as market name values because these two market names show blanks in other related columns in that table. Also these two market names appeared only one time. 
-                        Screen short
+
+![Screenshot (3)](https://github.com/user-attachments/assets/81d62388-f8ed-4ac2-bef2-a475281841e1)
+
+                        
 when I did data analysis using sql we saw that sales amount column has some negative values and zeroe.So in power BI I use filter in sales amount column for avoiding zero or negative values.
 ```
 = Table.SelectRows(sales_transactions, each ([sales_amount] <> -1 and [sales_amount] <> 0))
 ```
+
 
 Another issue is in the sales amount column in transaction table has two types. I ssaw this issue when I did sql analysis. I solved this issue using Dax function in Power BI. I decided to convert USD into INR. So all the sales amount become in the same currency as INR.
 So I created a new column named Normalised_sales_amnt. Converting USD to  This normalised_sales _amount column contains all values in INR. For that I convert Sales amount in USD to INR using the folloeing formula inDAX function
@@ -75,11 +81,44 @@ So I created a new column named Normalised_sales_amnt. Converting USD to  This n
 ```
 Now the normalised column has sales amount in same currency
 
+Finally  Data cleaning successfully completed and it is ready for finding key insights
+
+### Creating Dashboard using Power BI
+
+First I calculate Total Revenue . for that I create a new measure named 'Total Revenue'.
+```
+ Total Revenue = SUM('sales transactions'[Normalised_sales_amnt])
+```
+ ![Total_Revenue](https://github.com/user-attachments/assets/d77897da-357a-4487-a72a-5b477ecb7062) 
+
+ Then calculate Total sales quantity 
+ ```
+ Sales_Qty = SUM('sales transactions'[sales_qty])
+```
+![Sales_qty (2)](https://github.com/user-attachments/assets/43d0eb7b-0122-4fcc-a0e1-a6c933cdfa0a) 
 
 
-                        
-   
-     
+I use Slicer for choosing time period. It helps to find sales data like revenue, profit, sales qty etc between particular time period.
+
+
+ ![Time_period](https://github.com/user-attachments/assets/72c89328-018a-41fc-abe1-41572be5cd94) 
+
+ Bar chart for showing Top 5 customers.
+
+ ![Top_customers](https://github.com/user-attachments/assets/ba680f75-a264-4d09-8a93-a579d7f9d30a) 
+
+ Then finding most selling products based on sales quantity.
+
+ ![Sales_qty](https://github.com/user-attachments/assets/894e3ffc-8cc7-4cea-9e0a-ba3614dd42c2) 
+
+ Then use a Pie chart for identifying each zone contribute how much percentage in the total revenue.
+
+![Revenue by Zone](https://github.com/user-attachments/assets/b818603d-99a0-45fc-9b37-9e79132beef7) 
+
+Create a line graph shows revenue in each year.
+
+![Revenue by year](https://github.com/user-attachments/assets/7668eae7-81af-4e40-8b36-1e2c45cf5cdc)
+
 
 
 
