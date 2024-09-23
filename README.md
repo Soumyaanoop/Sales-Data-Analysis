@@ -59,6 +59,25 @@ show the total revenue in chennai in the year 2020
  Screen Short
 
 ### Data cleaning & Analysis using Power BI
+
+First I did filter in the column market_name from the table Market for avoiding new york and paris as market name values because these two market names show blanks in other related columns in that table. Also these two market names appeared only one time. 
+                        Screen short
+when I did data analysis using sql we saw that sales amount column has some negative values and zeroe.So in power BI I use filter in sales amount column for avoiding zero or negative values.
+```
+= Table.SelectRows(sales_transactions, each ([sales_amount] <> -1 and [sales_amount] <> 0))
+```
+
+Another issue is in the sales amount column in transaction table has two types. I ssaw this issue when I did sql analysis. I solved this issue using Dax function in Power BI. I decided to convert USD into INR. So all the sales amount become in the same currency as INR.
+So I created a new column named Normalised_sales_amnt. Converting USD to  This normalised_sales _amount column contains all values in INR. For that I convert Sales amount in USD to INR using the folloeing formula inDAX function
+
+```
+=Table.AddColumn(#"Filtered Rows1", "normalised_sales_amount", each if [currency]="USD#(cr)" then [sales_amount]*83 else [sales_amount])
+```
+Now the normalised column has sales amount in same currency
+
+
+
+                        
    
      
 
