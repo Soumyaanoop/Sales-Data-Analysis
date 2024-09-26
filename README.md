@@ -10,11 +10,13 @@ The data set contains 5 tables. Tables are Customers, Date, Markets, Products an
 ## Tools
  
  MySQL 
+ 
  Power BI 
 
  ## steps
+  
   ### Data Analysis using SQL
- 1) I use dump sql file as data set. so I imort this dump sql file into MySQL. It will create entire data base along with the records in the system. Sales is the database name and it has 5 tables. Names of the tables are Customers, Date, Markets, Products and Transactions.
+1) I use dump sql file as data set. so I imort this dump sql file into MySQL. It will create entire data base along with the records in the system. Sales is the database name and it has 5 tables. Names of the tables are Customers, Date, Markets, Products and Transactions.
 
   show the records from customers table
    ```sql
@@ -85,48 +87,69 @@ Finally  Data cleaning successfully completed and it is ready for finding key in
 
 ### Creating Dashboard using Power BI
 
+
+
+![Dashboard](https://github.com/user-attachments/assets/dba981e9-2c83-4048-8b09-b240a0b6aed1)
+
+
 First I calculate Total Revenue . for that I create a new measure named 'Total Revenue'.
 ```
  Total Revenue = SUM('sales transactions'[Normalised_sales_amnt])
 ```
- ![Total_Revenue](https://github.com/user-attachments/assets/d77897da-357a-4487-a72a-5b477ecb7062) 
+ 
+![Total Revenue](https://github.com/user-attachments/assets/5249d5a7-cef7-4c36-b673-b7e18f9af1b9)
 
  Then calculate Total sales quantity 
  ```
  Sales_Qty = SUM('sales transactions'[sales_qty])
 ```
-![Sales_qty (2)](https://github.com/user-attachments/assets/43d0eb7b-0122-4fcc-a0e1-a6c933cdfa0a) 
+
+![Sales_qty](https://github.com/user-attachments/assets/1021316f-4189-4e6d-ba3e-0ecb432b28e6)
 
 
-I use Slicer for choosing time period. It helps to find sales data like revenue, profit, sales qty etc between particular time period.
+I 
 
 
- ![Time_period](https://github.com/user-attachments/assets/72c89328-018a-41fc-abe1-41572be5cd94) 
+![Total  Profit](https://github.com/user-attachments/assets/ccf1ed62-179a-4cf0-bdfd-c8c36a92e151)
 
+ 
  Bar chart for showing Top 5 customers.
 
- ![Top_customers](https://github.com/user-attachments/assets/ba680f75-a264-4d09-8a93-a579d7f9d30a) 
+ ![Top 5 customers](https://github.com/user-attachments/assets/bbd34640-afb5-4dbc-81cf-ecc9cf2be894)
 
+ 
  Then finding most selling products based on sales quantity.
 
- ![Sales_qty](https://github.com/user-attachments/assets/894e3ffc-8cc7-4cea-9e0a-ba3614dd42c2) 
+ 
+![Most selling Products](https://github.com/user-attachments/assets/24d0d545-c19a-4189-b298-d06aa6a0018f)
 
+ 
  Then use a Pie chart for identifying each zone contribute how much percentage in the total revenue.
 
-![Revenue by Zone](https://github.com/user-attachments/assets/b818603d-99a0-45fc-9b37-9e79132beef7) 
-
-Create a line graph shows revenue in each year.
-
-![Revenue by year](https://github.com/user-attachments/assets/7668eae7-81af-4e40-8b36-1e2c45cf5cdc)
+![Revenue by zone](https://github.com/user-attachments/assets/32bfb849-28a8-4d66-a302-261b46f781a8)
 
 
+Create a line graph shows Profit in each year
 
+![Profit by year](https://github.com/user-attachments/assets/de2d58e9-6a80-4dc7-a42f-b1624e608b4b)
 
 
 
 
 
 
+
+
+
+![Table](https://github.com/user-attachments/assets/0287fb48-b1e1-4b37-a39f-bdbe8f235608) 
+
+
+
+
+
+Finally, I created buttons for choosing year
+
+![Dashboard](https://github.com/user-attachments/assets/ba170fbc-ac30-4fdd-868d-b398c7876daf)
 
 
 
