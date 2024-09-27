@@ -1,10 +1,12 @@
 # Sales-Data-Analysis
 
 ## Project Overview
-This project is to analyse the sales data, extract necessary information about products and customers based on a combination of features. It will explore sales trends over time identify best selling products, top customers, calculate total revenue, find revenue distribution among different zones and create visualisations to present findings effectively. This project showcases my ability to manipulate and derive insights from large data sets enabling me to make data driven recommendations for optimizing sales strategies.
+The world of business thrives on data-driven decisions and the ability to harness the power of data is essential. In this project, we embark on an exciting journey to analyze sales data, uncover trends, and reveal valuable insights that will drive strategic decision-making.
+This project is to analyse the sales data, extract necessary information about products and customers based on a combination of features. It will explore sales trends over time, identify best selling products, top customers, calculate total revenue, calculate Profit, find revenue distribution among different zones and create visualisations to present findings effectively. This project showcases my ability to manipulate and derive insights from large data sets enabling me to make data driven recommendations for optimizing sales strategies.
 
 ## Data Set
-The data set contains 5 tables. Tables are Customers, Date, Markets, Products and Transactions.
+
+The data set has sales data from 2017 to 2020 . It contains 5 tables. Tables are Customers, Date, Markets, Products and Transactions.
 
 
 ## Tools
@@ -16,7 +18,8 @@ The data set contains 5 tables. Tables are Customers, Date, Markets, Products an
  ## steps
   
   ### Data Analysis using SQL
-1) I use dump sql file as data set. so I imort this dump sql file into MySQL. It will create entire data base along with the records in the system. Sales is the database name and it has 5 tables. Names of the tables are Customers, Date, Markets, Products and Transactions.
+
+I use dump sql file as data set. so I import this dump sql file into MySQL. It will create entire data base along with the records in the system. Sales is the database name and it has 5 tables. Names of the tables are Customers, Date, Markets, Products and Transactions.
 
   show the records from customers table
    ```sql
@@ -27,21 +30,21 @@ The data set contains 5 tables. Tables are Customers, Date, Markets, Products an
   select count(*) from sales.customers;
   ```
 show transactions for the market name Chennai
-```sql
+ ```sql
  select * from sales.tranactions where market_code = 'Mark001';
-```
+ ```
 check the sales amount has any wrong value
-```sql
+ ```sql
  Select *  from sales.transactions where sales_amount<=0;
-```
-Screen short
-here we can see that sales amount column has some negative values and zero. So I have to clean that using power BI.
+ ```
+
+Here we can see that sales amount column has some negative values and zero. So I have to clean that using power BI.
 
 let's find the currency column for sales amount in same currency or not.
 ```sql
  select distinct currency from sales.transactions;
 ```
-Screen Short
+
 
 Here we can see that  two types INR , US.
 
@@ -59,7 +62,8 @@ show the total revenue in chennai in the year 2020
 
 ### Data Modeling using Power BI  
  
- ![Data Modelling](https://github.com/user-attachments/assets/2d158cea-dc2a-4da1-8c13-230e5aaff795)
+ 
+![Data Modelling](https://github.com/user-attachments/assets/f87634cd-c1e3-428b-9790-1055511a7e91)
 
 
 ### Data cleaning & Analysis using Power BI
@@ -75,8 +79,9 @@ when I did data analysis using sql we saw that sales amount column has some nega
 ```
 
 
-Another issue is in the sales amount column in transaction table has two types. I ssaw this issue when I did sql analysis. I solved this issue using Dax function in Power BI. I decided to convert USD into INR. So all the sales amount become in the same currency as INR.
-So I created a new column named Normalised_sales_amnt. Converting USD to  This normalised_sales _amount column contains all values in INR. For that I convert Sales amount in USD to INR using the folloeing formula inDAX function
+Another issue is in the sales amount column in transaction table has two types. I saw this issue when I did sql analysis. I solved this issue using Dax function in Power BI. I decided to convert USD into INR. So all the sales amount become in the same currency as INR.
+
+So I created a new column named Normalised_sales_amnt. Converting USD to  This normalised_sales _amount column contains all values in INR. For that I convert Sales amount in USD to INR using the folloeing formula in DAX function
 
 ```
 =Table.AddColumn(#"Filtered Rows1", "normalised_sales_amount", each if [currency]="USD#(cr)" then [sales_amount]*83 else [sales_amount])
@@ -89,7 +94,10 @@ Finally  Data cleaning successfully completed and it is ready for finding key in
 
 
 
-![Dashboard](https://github.com/user-attachments/assets/dba981e9-2c83-4048-8b09-b240a0b6aed1)
+
+
+![Screenshot (31)](https://github.com/user-attachments/assets/0a7461a7-ca5e-491b-940b-534a3d6e7642)
+
 
 
 First I calculate Total Revenue . for that I create a new measure named 'Total Revenue'.
@@ -107,7 +115,10 @@ First I calculate Total Revenue . for that I create a new measure named 'Total R
 ![Sales_qty](https://github.com/user-attachments/assets/1021316f-4189-4e6d-ba3e-0ecb432b28e6)
 
 
-I 
+Then I calculated Profit.
+```
+Profit = [Total Revenue] -[Total Cost]
+```
 
 
 ![Total  Profit](https://github.com/user-attachments/assets/ccf1ed62-179a-4cf0-bdfd-c8c36a92e151)
@@ -115,13 +126,16 @@ I
  
  Bar chart for showing Top 5 customers.
 
- ![Top 5 customers](https://github.com/user-attachments/assets/bbd34640-afb5-4dbc-81cf-ecc9cf2be894)
+ 
+ ![Top5 Customer](https://github.com/user-attachments/assets/bafa0e31-11ba-4b0d-9fcc-6d35e4a18674)
+
 
  
  Then finding most selling products based on sales quantity.
 
  
-![Most selling Products](https://github.com/user-attachments/assets/24d0d545-c19a-4189-b298-d06aa6a0018f)
+ ![Screenshot (27)](https://github.com/user-attachments/assets/2d88defa-cd8a-4f6a-ab75-3e9d31fcb082)
+
 
  
  Then use a Pie chart for identifying each zone contribute how much percentage in the total revenue.
@@ -129,15 +143,20 @@ I
 ![Revenue by zone](https://github.com/user-attachments/assets/32bfb849-28a8-4d66-a302-261b46f781a8)
 
 
-Create a line graph shows Profit in each year
 
-![Profit by year](https://github.com/user-attachments/assets/de2d58e9-6a80-4dc7-a42f-b1624e608b4b)
-
+Create a graph for showing revenue in each year on monthly basis.
 
 
 
 
+![Sales Trend](https://github.com/user-attachments/assets/fc34f3dd-b93a-4216-9c6c-6559e1d54163)
 
+
+
+
+
+
+I choose table . It shows profit from each product.
 
 
 
