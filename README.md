@@ -59,14 +59,23 @@ show the total revenue in chennai in the year 2020
  select sum(sales.transactions.sales_amount) from sales.transactions INNER JOIN sales.date ON sales.transactions.order_date=sales.date.date where sales.date.year=2020 and sales.transactions.market_code='Mark001' ;
 ```
 
+### Connecting MySQL Database to Power BI 
 
-### Data Modeling using Power BI  
- 
+Connecting sales database to Power BI to visualize and analyze the data through interactive dashboards and reports, gaining insights and facilitating informed decision-making.
+
+#### Data Modeling using Power BI  
+
+Data Modelling is the process of analyzing the data objects and their relationship to the other objects. It is used to analyze the data requirements that are required for the business processes. In order to achieve this we will load our datasets to Microsoft Power BI Desktop. 
+Once the dataset is loaded in Power BI Desktop, we have to create the schema diagram using the star schema mechanism.
+
  
 ![Data Modelling](https://github.com/user-attachments/assets/f87634cd-c1e3-428b-9790-1055511a7e91)
 
 
-### Data cleaning & Analysis using Power BI
+
+#### Data Transformation
+
+In Power query editor,
 
 First I did filter in the column market_name from the table Market for avoiding new york and paris as market name values because these two market names show blanks in other related columns in that table. Also these two market names appeared only one time. 
 
@@ -90,7 +99,8 @@ Now the normalised column has sales amount in same currency
 
 Finally  Data cleaning successfully completed and it is ready for finding key insights
 
-### Creating Dashboard using Power BI
+### Building Dashboard using Power BI
+
 
 
 
@@ -99,8 +109,21 @@ Finally  Data cleaning successfully completed and it is ready for finding key in
 ![Screenshot (31)](https://github.com/user-attachments/assets/0a7461a7-ca5e-491b-940b-534a3d6e7642)
 
 
+I create certain measures which would allow to better depict the effect on sales by different customer and products overtime as per the client's demands.
 
-First I calculate Total Revenue . for that I create a new measure named 'Total Revenue'.
+The three measures once calculated are moved to a newly created standalone table called the measure table.
+
+The three measures calculate are:
+
+1) Total Revenue.
+2) Total Profit.
+3) Total sales quantity.
+
+
+
+
+
+First I calculate Total Revenue . 
 ```
  Total Revenue = SUM('sales transactions'[Normalised_sales_amnt])
 ```
@@ -156,7 +179,7 @@ Create a graph for showing revenue in each year on monthly basis.
 
 
 
-I choose table . It shows profit from each product.
+I choose table for showing profit from each product.
 
 
 
@@ -172,6 +195,7 @@ Finally, I created buttons for choosing year
 
 
 
+### Insights 
 
 
 
