@@ -197,6 +197,18 @@ Finally, I created buttons for choosing year
 
 ### Insights 
 
+-The analysis of the product sales has provided valuable insights about revenue, profit, products and customers. 
+
+-Sales increased from the year 2017 to 2018. The year 2018 saw exponential surge in sales. Then subsequent decline in product sales. 
+
+-Most sold product is prod090 but it contributes only 1.889% of total profit.
+
+-The product prod318 made highest profit. This product holds 9.96% of total profit.
+
+-Electricalsara Stores, Electricalslytical, Excel Stores, Premium Stores, Nixon are top 5 customers among these customers majority are brick & mortar type.
+
+-North zone contributes 74.5% of revenue.
+
 
 
 
